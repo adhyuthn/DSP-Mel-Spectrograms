@@ -1,3 +1,4 @@
+```
 1.  Basic signals: Generate the following discrete time signals for n=-10 to +10 and display
     the following in separate figures using “stem” Matlab function:
     a. Unit impulse δ [n]
@@ -27,3 +28,4 @@
          subplot of one figure with appropriate legend.
       ii. Display the absolute value of x[n] for n=0 to 20 in another subplot of the
           same figure.
+```
