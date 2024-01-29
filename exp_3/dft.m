@@ -1,6 +1,5 @@
 function Xk=dft(x)
     N=length(x);
-%     w=dftmtx(N);
     Wx=zeros(N);
     for k=0:N-1
         for n=0:N-1
