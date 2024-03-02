@@ -3,106 +3,73 @@ N2 = 55;
 n1 = 0:N1-1;
 n2 = 0:N2-1;
 
-hamming
+% hamming
 
 hamming1 = 0.54 - 0.46*cos(2*pi*n1/(N1-1));
 hamming2 = 0.54 - 0.46*cos(2*pi*n2/(N2-1));
-stem(abs(hamming1))
-figure
-stem(abs(hamming2))
-
-% hamming ffts
-
-hamming_fft_1 = myfreqz(hamming1);
-hamming_fft_1=20*log10(abs(hamming_fft_1));
-figure 
-plot(hamming_fft_1)
-
-hamming_fft_2 = myfreqz(hamming2);
-hamming_fft_2=20*log10(abs(hamming_fft_2));
-figure 
-plot(hamming_fft_2)
+answer(hamming1,hamming2,'hamming window')
 
 % hanning 
 
 hanning1 = 0.5-0.5*cos(2*pi*n1/(N1-1));
 hanning2 = 0.5-0.5*cos(2*pi*n2/(N2-1));
-figure
-stem(hanning1)
-figure
-stem(hanning2)
+answer(hanning1,hanning2,'hanning window')
 
-% hanning ffts
-
-hanning_fft_1 = myfreqz(hanning1);
-hanning_fft_1=20*log10(abs(hanning_fft_1));
-figure 
-plot(hanning_fft_1)
-
-hanning_fft_2 = myfreqz(hanning2);
-hanning_fft_2=20*log10(abs(hanning_fft_2));
-figure 
-plot(hanning_fft_2)
-
-rectangular
+% rectangular
 
 rect1 = ones(1,N1-1);
 rect2 = ones(1,N2-1);
-figure 
-stem(rect1)
-figure
-stem(rect2)
+answer(rect1,rect2,'rectangular window')
 
-% rectangular dfts
-
-rect_fft_1 = myfreqz(rect1);
-rect_fft_1 = 20*log10(abs(rect_fft_1));
-figure
-plot(rect_fft_1)
-
-rect_fft_2 = myfreqz(rect2);
-rect_fft_2 = 20*log10(abs(rect_fft_2));
-figure
-plot(rect_fft_2)
-
-barlett 
+% barlett 
 
 barlett1 = 1-(2*abs(n1-(N1-1)/2)/(N1-1));
-figure
-stem(barlett1)
 barlett2 = 1-(2*abs(n2-(N2-1)/2)/(N2-1));
-figure
-stem(barlett2)
+answer(barlett1,barlett2,'barlett window');
 
-% barlett dfts
-
-barlett_fft_1 = myfreqz(barlett1);
-barlett_fft_1 = 20*log10(abs(barlett_fft_1));
-figure
-plot(barlett_fft_1)
-
-barlett_fft_2 = myfreqz(barlett2);
-barlett_fft_2 = 20*log10(abs(barlett_fft_2));
-figure
-plot(barlett_fft_2)
 
 % blackmann 
 
 blackmann1 = 0.42-0.5*cos(2*pi*n1/(N1-1))+0.08*cos(4*pi*n1/(N1-1));
-figure
-stem(blackmann1)
 blackmann2 = 0.42-0.5*cos(2*pi*n2/(N2-1))+0.08*cos(4*pi*n2/(N2-1));
-figure
-stem(blackmann2)
+answer(blackmann1,blackmann2,'blackmann window');
 
-% blackmann dfts
+function answer(x1,x2,name)
+    f1 = linspace(0, pi, 512);
+    x1_fft = myfreqz(x1);
+    x1_abs_dB = 20*log10(calc_abs(x1_fft));
+    x2_fft = myfreqz(x2);
+    x2_abs_dB = 20*log10(calc_abs(x2_fft));
+    
+    figure
+    subplot(2,2,1);
+    stem(x1,'k.-');
+    title(name,'time domain - N = 15')
+    xlabel(' n ---> ');
+    ylabel(' Amplitude ---> ')
+    ylim([0,1.2]);
+    xlim([0,16]);
+    
+    subplot(2,2,2);
+    plot(f1,x1_abs_dB);
+    title(name,'frequency domain - N = 15')
+    xlabel(' w ---> ');
+    ylabel(' Amplitude in dB ---> ')
+    
+    subplot(2,2,3);
+    stem(x2,'k.-');
+    title(name,'time domain - N = 55')
+    xlabel(' n ---> ');
+    ylabel(' Amplitude ---> ')
+    ylim([0,1.2]);
+    xlim([0,56])
+    
+    subplot(2,2,4);
+    plot(f1,x2_abs_dB);
+    title(name,'frequency domain - N = 55')
+    xlabel(' w ---> ');
+    ylabel(' Amplitude in dB ---> ')
+    
+end
 
-blackmann_fft_1 = myfreqz(blackmann1);
-blackmann_fft_1 = 20*log10(abs(blackmann_fft_1));
-figure
-plot(blackmann_fft_1)
 
-blackmann_fft_2 = myfreqz(blackmann2);
-blackmann_fft_2 = 20*log10(abs(blackmann_fft_2));
-figure
-plot(blackmann_fft_2) 
