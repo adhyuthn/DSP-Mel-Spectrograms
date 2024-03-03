@@ -8,7 +8,7 @@ dim = [.09 .46 .5 .5];
 par_eqn = strcat('$ Partial \: fraction \: representation \: of \: H(z)= ',  makeEqn1(res, pole, k_gains), '$');
 title('Impulse Response - Using impz function')
 
-% annotation('textbox',dim , 'String',par_eqn,'Interpreter', "latex" , 'FitBoxToText','on', 'FontSize',18');
+annotation('textbox',dim , 'String',par_eqn,'Interpreter', "latex" , 'FitBoxToText','on', 'FontSize',18');
 
 n = 0:9;
 u_n = n>= 0;

@@ -9,7 +9,7 @@ dim = [.09 .46 .5 .5];
 nr_eqn = makeEqn(nr);
 dr_eqn = makeEqn(dr);
 net_eqn = strcat('$ H(z) = ', '\frac{' , nr_eqn , '}{', dr_eqn , '}$');
-% annotation('textbox',dim,'String',net_eqn,'Interpreter', "latex" , 'FitBoxToText','on', 'FontSize',21');
+annotation('textbox',dim,'String',net_eqn,'Interpreter', "latex" , 'FitBoxToText','on', 'FontSize',21');
 
 
 function eqn=makeEqn(coeffs)
