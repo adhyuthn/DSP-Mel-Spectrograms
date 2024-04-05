@@ -1,17 +1,17 @@
-[x,fs] = audioread("audio.wav");
-[s,f,t] = mystft(x,fs,hamming(128),13);
-
-% not sure somewhere I read that square of stft
-% gives spectrogram
-s=s.*s;
-
-% for plotting the spectrogram
-imagesc(t,f,log10(abs(s)))
-xlabel('time')
-ylabel('frequency')
-colorbar
-s2 = spectrogram(x,'yaxis');
-
+% [x,fs] = audioread("audio.wav");
+% [s,f,t] = mystft(x,fs,hamming(128),13);
+% 
+% % not sure somewhere I read that square of stft
+% % gives spectrogram
+% s=s.*s;
+% 
+% % for plotting the spectrogram
+% imagesc(t,f,log10(abs(s)))
+% xlabel('time')
+% ylabel('frequency')
+% colorbar
+% s2 = spectrogram(x,'yaxis');
+ 
 function [s, f, t] = mystft(x, fs, window, overlap)
     % x: input signal    % fs: sampling frequency
     % window: window function    % overlap: no.of overlap segments
