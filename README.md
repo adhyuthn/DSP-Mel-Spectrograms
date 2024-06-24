@@ -1,7 +1,16 @@
+> A cusotm MATLAB implementation to generate Mel Spectrograms.
+> Tested against the built-in Mel Spectrogram function.
+
+![](./Mel%20Spectrogram%20generation/resources/report2.png)
+
+---
+
+![](./Mel%20Spectrogram%20generation/resources/report1.png)
+
+---
+
 # RESOURCES AND LINKS
 ### DSP related stuff
-- Used functions 
-    - https://github.com/zafarrafii/Zaf-Matlab/blob/master/zaf.m
 - Spectrograms 
     - https://www.youtube.com/watch?v=_FatxGN3vAM
 - Mel Spectrograms 
@@ -23,5 +32,5 @@
     - Find upper and lower mel values.
     - Insert equally spaced points in between
     - Convert them into corresponding frequency values.
-    ![](resources/melbanks.png)
+    ![](./Mel%20Spectrogram%20generation/resources/melbanks.png)
     - Note that each spike is located evenly.
