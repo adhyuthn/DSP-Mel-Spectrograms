@@ -1,0 +1,10 @@
+n=0:20;
+x=exp((-1/12+1j*pi/6).*n);
+subplot(2,1,1);
+stem(n,real(x));
+hold on;
+stem(n,imag(x),'.-.');
+legend('real','imaginary');
+subplot(2,1,2);
+stem(n,abs(x));
+grid on;
